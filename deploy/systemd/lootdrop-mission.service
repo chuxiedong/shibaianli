@@ -1,0 +1,18 @@
+[Unit]
+Description=LootDrop 6-hour mission runner
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=__PROJECT_DIR__
+Environment=DURATION_SECONDS=21600
+Environment=CYCLE_SECONDS=900
+Environment=BACKUP_EVERY_N=4
+Environment=BACKUP_KEEP=14
+ExecStart=/bin/sh __PROJECT_DIR__/scripts/mission_6h.sh
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: lootdrop-cn
+    env: python
+    region: oregon
+    plan: starter
+    numInstances: 1
+    buildCommand: ""
+    startCommand: "python backend/app.py"
+    envVars:
+      - key: PORT
+        value: "10000"
+    healthCheckPath: "/api/health"
+    autoDeploy: true

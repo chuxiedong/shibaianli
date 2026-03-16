@@ -1,0 +1,8 @@
+[Unit]
+Description=LootDrop one-shot backup
+
+[Service]
+Type=oneshot
+WorkingDirectory=__PROJECT_DIR__
+Environment=BACKUP_KEEP=14
+ExecStart=/bin/sh __PROJECT_DIR__/scripts/backup_data.sh

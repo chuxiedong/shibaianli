@@ -1,0 +1,19 @@
+[Unit]
+Description=LootDrop mission watchdog
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=__PROJECT_DIR__
+Environment=CHECK_INTERVAL_SECONDS=60
+Environment=STALE_LOCK_SECONDS=1800
+Environment=MAX_URLS=80
+Environment=DURATION_SECONDS=21600
+Environment=CYCLE_SECONDS=900
+ExecStart=/bin/sh __PROJECT_DIR__/scripts/mission_watchdog.sh
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

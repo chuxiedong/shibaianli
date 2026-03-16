@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+
+# Runtime data
+logs/
+backups/
+.mission_6h.lock/
+.mission_watchdog.lock/
+data.db
+data.db-*
+
+# Reports generated on runtime
+reports/*.json
+reports/*.md
+reports/*.csv
+
+# Bundles
+lootdrop_render_bundle.zip

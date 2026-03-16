@@ -1,0 +1,11 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+COPY . /app
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV PORT=8090
+
+EXPOSE 8090
+CMD ["python", "backend/app.py"]

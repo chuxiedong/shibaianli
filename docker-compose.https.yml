@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  caddy:
+    image: caddy:2.9-alpine
+    container_name: lootdrop-cn-caddy
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - DOMAIN=${DOMAIN}
+      - ACME_EMAIL=${ACME_EMAIL}
+    volumes:
+      - ./deploy/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./caddy_data:/data
+      - ./caddy_config:/config
+    depends_on:
+      lootdrop-cn:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:2019/config/"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    restart: unless-stopped

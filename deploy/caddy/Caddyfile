@@ -1,0 +1,31 @@
+{
+  email {$ACME_EMAIL}
+  auto_https on
+}
+
+{$DOMAIN} {
+  encode zstd gzip
+
+  header {
+    X-Frame-Options "SAMEORIGIN"
+    X-Content-Type-Options "nosniff"
+    Referrer-Policy "strict-origin-when-cross-origin"
+    Permissions-Policy "geolocation=(), camera=(), microphone=()"
+  }
+
+  @api path /api/*
+  handle @api {
+    reverse_proxy lootdrop-cn:8090
+    header Cache-Control "no-store"
+  }
+
+  @assets path /assets/*
+  handle @assets {
+    reverse_proxy lootdrop-cn:8090
+    header Cache-Control "public, max-age=604800"
+  }
+
+  handle {
+    reverse_proxy lootdrop-cn:8090
+  }
+}

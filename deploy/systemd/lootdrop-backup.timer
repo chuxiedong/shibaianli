@@ -1,0 +1,11 @@
+[Unit]
+Description=Run LootDrop backup every 12 hours
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=12h
+Persistent=true
+Unit=lootdrop-backup.service
+
+[Install]
+WantedBy=timers.target

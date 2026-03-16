@@ -1,0 +1,11 @@
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.git
+reports
+reference
+backups
+caddy_data
+caddy_config
+logs

@@ -1,0 +1,2 @@
+# Run watchdog every minute (if not running, start detached)
+* * * * * cd "/Users/somalia/Documents/New project 2/lootdrop_clone" && CHECK_INTERVAL_SECONDS=30 STALE_LOCK_SECONDS=600 nohup /bin/sh scripts/mission_watchdog.sh >> logs/mission_watchdog.cron.log 2>&1 &

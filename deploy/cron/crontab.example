@@ -1,0 +1,6 @@
+# LootDrop periodic tasks
+# Every 15 minutes: update + ingest + periodic backup through orchestrator
+*/15 * * * * cd "/Users/somalia/Documents/New project 2/lootdrop_clone" && DURATION_SECONDS=900 CYCLE_SECONDS=900 BACKUP_EVERY_N=4 BACKUP_KEEP=14 /bin/sh scripts/mission_6h.sh >> logs/cron_mission.log 2>&1
+
+# Daily backup at 03:20
+20 3 * * * cd "/Users/somalia/Documents/New project 2/lootdrop_clone" && BACKUP_KEEP=21 /bin/sh scripts/backup_data.sh >> logs/cron_backup.log 2>&1
