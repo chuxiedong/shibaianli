@@ -17,6 +17,7 @@ logs/
 backups/
 .mission_6h.lock/
 .mission_watchdog.lock/
+.web.pid
 data.db
 data.db-*
 
